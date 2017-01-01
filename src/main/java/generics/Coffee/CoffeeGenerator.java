@@ -4,7 +4,7 @@ import net.mindview.util.Generator;
 
 import java.util.Iterator;
 import java.util.Random;
-public class CoffeeGenerator implements Generator<Coffee>, Iterator<Coffee>{
+public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee>{
     private Class[] types = {Latte.class,Americano.class,Cappuccino.class,Breve.class,Mocha.class};
     private static Random rand = new Random(47);
 
@@ -15,11 +15,6 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterator<Coffee>{
     private int size = 0;
     public CoffeeGenerator(int size) {
         this.size = size;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return true;
     }
 
     @Override
@@ -55,6 +50,7 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterator<Coffee>{
         for (int i = 0; i < 5; i++) {
             System.out.println(gen.next());
         }
+
         for (Coffee c : new CoffeeGenerator(5)) {
             System.out.println(c);
         }
